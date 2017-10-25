@@ -5,6 +5,7 @@
 
 class QFileExplorer;
 class QCppCommentViewer;
+class QSupplements;
 //class QTabWidget;
 
 class XtractCom : public QMainWindow
@@ -19,6 +20,7 @@ protected:
 	QCppCommentViewer * mQCppCommentViewer;
 	QTabWidget * mTabExplorer;
 	QTabWidget * mTabTask;
+	QSupplements * mSupplements;
 
 
 private:
