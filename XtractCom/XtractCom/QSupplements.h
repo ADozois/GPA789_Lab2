@@ -3,6 +3,7 @@
 
 #include <QWidget>
 class QPushButton;
+class QMessageBox;
 
 class QSupplements : public QWidget
 {
@@ -15,6 +16,8 @@ protected:
 	QPushButton * mButtonXTractC;
 	QPushButton * mButtonCpp;
 	QPushButton * mButtonQt;
+	QMessageBox * mMessageXtractC;
+	QMessageBox * mMessageCpp;
 
 
 
