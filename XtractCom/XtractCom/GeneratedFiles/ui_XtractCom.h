@@ -15,9 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -25,8 +23,6 @@ QT_BEGIN_NAMESPACE
 class Ui_XtractComClass
 {
 public:
-    QMenuBar *menuBar;
-    QToolBar *mainToolBar;
     QWidget *centralWidget;
     QStatusBar *statusBar;
 
@@ -35,12 +31,6 @@ public:
         if (XtractComClass->objectName().isEmpty())
             XtractComClass->setObjectName(QStringLiteral("XtractComClass"));
         XtractComClass->resize(600, 400);
-        menuBar = new QMenuBar(XtractComClass);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        XtractComClass->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(XtractComClass);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        XtractComClass->addToolBar(mainToolBar);
         centralWidget = new QWidget(XtractComClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         XtractComClass->setCentralWidget(centralWidget);

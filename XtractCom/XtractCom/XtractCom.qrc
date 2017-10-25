@@ -1,4 +1,5 @@
 <RCC>
     <qresource prefix="XtractCom">
+		<file alias="Icon">Resources/icon.png</file>
     </qresource>
 </RCC>
