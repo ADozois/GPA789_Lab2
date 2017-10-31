@@ -2,6 +2,7 @@
 #include "QFileExplorer.h"
 #include "QCppCommentViewer.h"
 #include "QSupplements.h"
+#include "QGenerationLot.h"
 #include <qsplitter.h>
 
 XtractCom::XtractCom(QWidget *parent)
@@ -23,16 +24,18 @@ XtractCom::XtractCom(QWidget *parent)
 	//Creation du supplements
 	mSupplements = new QSupplements;
 
+	//Creation du generation lot
+	mGenerationLot = new QGenerationLot(mQFileExplorer, parent);
+
 	//Create tabs
 	mTabExplorer = new QTabWidget;
 	mTabExplorer->addTab(mQFileExplorer, "Explorateur de fichier");
 	mTabTask = new QTabWidget;
 	mTabTask->addTab(mQCppCommentViewer, "Consultation");
+	mTabTask->addTab(mGenerationLot, "Génération par lot");
 	mTabTask->addTab(mSupplements, QString("Suppléments"));
-	//
-	//mTabTask->addTab(newwidget, "Génération par lot");
-
-
+	
+	
 	QSplitter * mainSplitter{ new QSplitter };
 	mainSplitter->addWidget(mTabExplorer);
 	mainSplitter->addWidget(mTabTask);

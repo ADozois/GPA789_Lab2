@@ -6,6 +6,7 @@
 class QFileExplorer;
 class QCppCommentViewer;
 class QSupplements;
+class QGenerationLot;
 //class QTabWidget;
 
 class XtractCom : public QMainWindow
@@ -21,6 +22,7 @@ protected:
 	QTabWidget * mTabExplorer;
 	QTabWidget * mTabTask;
 	QSupplements * mSupplements;
+	QGenerationLot * mGenerationLot;
 
 
 private:
