@@ -16,8 +16,10 @@ protected:
 	QPushButton * mButtonXTractC;
 	QPushButton * mButtonCpp;
 	QPushButton * mButtonQt;
-	QMessageBox * mMessageXtractC;
 	QMessageBox * mMessageCpp;
+	
+protected slots:
+	void showAboutXtractC();
 
 
 
