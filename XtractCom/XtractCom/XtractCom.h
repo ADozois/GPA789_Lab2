@@ -24,7 +24,13 @@ protected:
 	QSupplements * mSupplements;
 	QGenerationLot * mGenerationLot;
 
+protected slots:
+	void setFileExplorerMode(int index);
+	
+
 
 private:
 	Ui::XtractComClass ui;
+
+
 };

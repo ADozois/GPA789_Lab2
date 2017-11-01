@@ -5,6 +5,7 @@
 
 class QFileSelector;
 class QFileExplorer;
+class QExitFolderSelector;
 
 class QGenerationLot : public QWidget
 {
@@ -16,6 +17,7 @@ public:
 
 private:
 	QFileSelector * mFileSelect;
+	QExitFolderSelector * mGroupExitFolderSelector;
 
 };
 

@@ -5,6 +5,7 @@
 #include "QGenerationLot.h"
 #include <qsplitter.h>
 
+
 XtractCom::XtractCom(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -27,6 +28,8 @@ XtractCom::XtractCom(QWidget *parent)
 	//Creation du generation lot
 	mGenerationLot = new QGenerationLot(mQFileExplorer, parent);
 
+	
+
 	//Create tabs
 	mTabExplorer = new QTabWidget;
 	mTabExplorer->addTab(mQFileExplorer, "Explorateur de fichier");
@@ -34,6 +37,8 @@ XtractCom::XtractCom(QWidget *parent)
 	mTabTask->addTab(mQCppCommentViewer, "Consultation");
 	mTabTask->addTab(mGenerationLot, "Génération par lot");
 	mTabTask->addTab(mSupplements, QString("Suppléments"));
+
+	connect(mTabTask, &QTabWidget::tabBarClicked, this, &XtractCom::setFileExplorerMode);
 	
 	
 	QSplitter * mainSplitter{ new QSplitter };
@@ -46,4 +51,20 @@ XtractCom::XtractCom(QWidget *parent)
 
 	connect(mQFileExplorer, &QFileExplorer::fileSelected, mQCppCommentViewer, &QCppCommentViewer::setFile);
 	connect(mQCppCommentViewer, &QCppCommentViewer::eventSignaled, ui.statusBar, &QStatusBar::showMessage);
+}
+
+
+void XtractCom::setFileExplorerMode(int index)
+{
+	switch (index)
+	{
+	case 0: mQFileExplorer->setSelectionMode(QFileExplorer::SelectionMode::Single);
+		break;
+	case 1: mQFileExplorer->setSelectionMode(QFileExplorer::SelectionMode::Extended);
+		break;
+	case 2: mQFileExplorer->setSelectionMode(QFileExplorer::SelectionMode::Single);
+		break;
+	default:  mQFileExplorer->setSelectionMode(QFileExplorer::SelectionMode::Single);
+		break;
+	}
 }

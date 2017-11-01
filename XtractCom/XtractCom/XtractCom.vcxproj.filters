@@ -144,6 +144,15 @@
     <ClCompile Include="QGenerationLot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QExitFolderSelector.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QExitFolderSelector.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="QExitFolderSelector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="XtractCom.h">
@@ -186,6 +195,9 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="QGenerationLot.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QExitFolderSelector.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
