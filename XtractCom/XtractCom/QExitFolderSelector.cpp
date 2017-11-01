@@ -11,16 +11,13 @@ QExitFolderSelector::QExitFolderSelector(QWidget * parent)
 
 	mGroupBoxExitFolder = new QGroupBox("Dossier de sortie");
 	mRadioButtonSourceFolder = new QRadioButton("Utiliser le dossier source");
-	mRadioButtonNewFolder = new QRadioButton("Spécifié un dossier de sourtie");
+	mRadioButtonNewFolder = new QRadioButton("Spécifié un dossier de sortie");
 	mFolderPathLabel = new QLabel("");
 	mSelectButton = new QPushButton("Sélectionner");
 	mRadioButtonSourceFolder->setChecked(true);
 	mSelectButton->setEnabled(false);
 
-	//connect(mRadioButtonSourceFolder, &QRadioButton::isChecked, mSelectButton, &QPushButton::setDisabled);
-	//connect(mRadioButtonNewFolder, &QRadioButton::isChecked, mSelectButton, &QPushButton::setEnabled);
-	connect(mRadioButtonSourceFolder, &QRadioButton::toggled, mRadioButtonNewFolder, &QRadioButton::setChecked);
-	connect(mRadioButtonNewFolder, &QRadioButton::toggled, mRadioButtonSourceFolder, &QRadioButton::setChecked);
+	connect(mRadioButtonNewFolder, &QRadioButton::toggled, mSelectButton, &QPushButton::setEnabled);
 
 	QGridLayout * gridLayout = new QGridLayout;
 	gridLayout->addWidget(mRadioButtonSourceFolder, 0, 0);
