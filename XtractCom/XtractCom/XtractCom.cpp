@@ -2,7 +2,7 @@
 #include "QFileExplorer.h"
 #include "QCppCommentViewer.h"
 #include "QSupplements.h"
-#include "QGenerationLot.h"
+#include "QBatchProcess.h"
 #include <qsplitter.h>
 
 XtractCom::XtractCom(QWidget *parent)
@@ -25,7 +25,7 @@ XtractCom::XtractCom(QWidget *parent)
 	mSupplements = new QSupplements;
 
 	//Creation du generation lot
-	mGenerationLot = new QGenerationLot(mQFileExplorer, parent);
+	mGenerationLot = new QBatchProcess(mQFileExplorer, parent);
 
 	//Create tabs
 	mTabExplorer = new QTabWidget;

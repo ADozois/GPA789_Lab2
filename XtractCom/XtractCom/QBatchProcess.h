@@ -6,13 +6,13 @@
 class QFileSelector;
 class QFileExplorer;
 
-class QGenerationLot : public QWidget
+class QBatchProcess : public QWidget
 {
 	Q_OBJECT
 
 public:
-	QGenerationLot(QFileExplorer const & fileExplorer,QWidget *parent);
-	~QGenerationLot();
+	QBatchProcess(QFileExplorer const & fileExplorer,QWidget *parent);
+	~QBatchProcess();
 
 private:
 	QFileSelector * mFileSelect;

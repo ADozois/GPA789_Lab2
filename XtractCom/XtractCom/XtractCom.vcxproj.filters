@@ -135,14 +135,11 @@
     <ClCompile Include="QSupplements.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_QGenerationLot.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_QGenerationLot.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QGenerationLot.cpp">
+    <ClCompile Include="QBatchProcess.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QBatchProcess.cpp">
+      <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -185,7 +182,7 @@
     <CustomBuild Include="QSupplements.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="QGenerationLot.h">
+    <CustomBuild Include="QBatchProcess.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>

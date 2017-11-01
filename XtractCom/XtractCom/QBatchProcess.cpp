@@ -1,10 +1,10 @@
-#include "QGenerationLot.h"
+#include "QBatchProcess.h"
 #include "QFileExplorer.h"
 #include "QFileSelector.h"
 #include <QGridLayout>
 
 
-QGenerationLot::QGenerationLot(QFileExplorer const & fileExplorer, QWidget *parent)
+QBatchProcess::QBatchProcess(QFileExplorer const & fileExplorer, QWidget *parent)
 	: QWidget(parent)
 {
 	mFileSelect = new QFileSelector(fileExplorer);
@@ -13,6 +13,6 @@ QGenerationLot::QGenerationLot(QFileExplorer const & fileExplorer, QWidget *pare
 	setLayout(gridLayout);
 }
 
-QGenerationLot::~QGenerationLot()
+QBatchProcess::~QBatchProcess()
 {
 }
