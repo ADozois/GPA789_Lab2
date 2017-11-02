@@ -22,9 +22,15 @@ protected:
 	QTabWidget * mTabExplorer;
 	QTabWidget * mTabTask;
 	QSupplements * mSupplements;
-	QBatchProcess * mGenerationLot;
+	QBatchProcess * mBatchProcess;
+
+	protected slots:
+	void setFileExplorerMode(int index);
+
 
 
 private:
 	Ui::XtractComClass ui;
+
+
 };

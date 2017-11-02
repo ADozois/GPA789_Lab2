@@ -5,6 +5,7 @@
 #include "QBatchProcess.h"
 #include <qsplitter.h>
 
+
 XtractCom::XtractCom(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -18,24 +19,28 @@ XtractCom::XtractCom(QWidget *parent)
 	mQFileExplorer = new QFileExplorer;
 	mQFileExplorer->setFileSuffixFilter(cppLanguageSuffix);
 	//Creation du cpp comment viewer
-	mQCppCommentViewer = new QCppCommentViewer;	
+	mQCppCommentViewer = new QCppCommentViewer;
 	mQCppCommentViewer->setFileSuffixFilter(cppLanguageSuffix);
 
 	//Creation du supplements
 	mSupplements = new QSupplements;
 
 	//Creation du generation lot
-	mGenerationLot = new QBatchProcess(mQFileExplorer, parent);
+	mBatchProcess = new QBatchProcess(mQFileExplorer, parent);
+
+
 
 	//Create tabs
 	mTabExplorer = new QTabWidget;
 	mTabExplorer->addTab(mQFileExplorer, "Explorateur de fichier");
 	mTabTask = new QTabWidget;
 	mTabTask->addTab(mQCppCommentViewer, "Consultation");
-	mTabTask->addTab(mGenerationLot, "Génération par lot");
+	mTabTask->addTab(mBatchProcess, "Génération par lot");
 	mTabTask->addTab(mSupplements, QString("Suppléments"));
-	
-	
+
+	connect(mTabTask, &QTabWidget::tabBarClicked, this, &XtractCom::setFileExplorerMode);
+
+
 	QSplitter * mainSplitter{ new QSplitter };
 	mainSplitter->addWidget(mTabExplorer);
 	mainSplitter->addWidget(mTabTask);
@@ -46,4 +51,20 @@ XtractCom::XtractCom(QWidget *parent)
 
 	connect(mQFileExplorer, &QFileExplorer::fileSelected, mQCppCommentViewer, &QCppCommentViewer::setFile);
 	connect(mQCppCommentViewer, &QCppCommentViewer::eventSignaled, ui.statusBar, &QStatusBar::showMessage);
+}
+
+
+void XtractCom::setFileExplorerMode(int index)
+{
+	switch (index)
+	{
+	case 0: mQFileExplorer->setSelectionMode(QFileExplorer::SelectionMode::Single);
+		break;
+	case 1: mQFileExplorer->setSelectionMode(QFileExplorer::SelectionMode::Extended);
+		break;
+	case 2: mQFileExplorer->setSelectionMode(QFileExplorer::SelectionMode::Single);
+		break;
+	default:  mQFileExplorer->setSelectionMode(QFileExplorer::SelectionMode::Single);
+		break;
+	}
 }
