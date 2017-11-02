@@ -23,6 +23,9 @@ protected:
 	QRadioButton * mRadioButtonNewFolder;
 	QLabel * mFolderPathLabel;
 
+protected slots:
+	void getDirectoryPath();
+
 };
 
 
