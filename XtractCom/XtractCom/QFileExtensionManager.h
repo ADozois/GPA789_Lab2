@@ -1,4 +1,5 @@
-#pragma once
+#ifndef Q_FiILE_EXTENSION_MANAGER
+#define Q_FiILE_EXTENSION_MANAGER
 
 #include <QWidget>
 
@@ -14,7 +15,7 @@ public:
 	QFileExtensionManager(QString const & boxName, QString const & extension, QString const & firstButton, QString const & secondButton, QWidget *parent = nullptr);
 	~QFileExtensionManager();
 
-public slots:
+	public slots:
 	QString getExtension(void);
 
 private:
@@ -25,3 +26,9 @@ private:
 
 	void widgetInitialization(void);
 };
+
+
+#endif // !Q_FiILE_EXTENSION_MANAGER
+
+
+
