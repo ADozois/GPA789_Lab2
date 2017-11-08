@@ -12,7 +12,7 @@ class QFileExtensionManager : public QWidget
 	Q_OBJECT
 
 public:
-	QFileExtensionManager(QString const & boxName, QString const & extension, QString const & firstButton, QString const & secondButton, QWidget *parent = nullptr);
+	QFileExtensionManager(QString const & boxName, QString const & firstButton, QString const & secondButton, QWidget *parent = nullptr);
 	~QFileExtensionManager();
 
 	public slots:
@@ -23,6 +23,8 @@ private:
 	QRadioButton * mXtractExt;
 	QRadioButton * mOtherExt;
 	QLineEdit * mExtension;
+
+	QString const mDefaultExt;
 
 	void widgetInitialization(void);
 };

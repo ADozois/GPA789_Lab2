@@ -3,14 +3,16 @@
 #include <QRadioButton>
 #include <QLineEdit>
 #include <QGridLayout>
+#include <stdexcept>
 
-QFileExtensionManager::QFileExtensionManager(QString const & boxName, QString const & extension, QString const & firstButton, QString const & secondButton, QWidget *parent)
-	: QWidget(parent)
+QFileExtensionManager::QFileExtensionManager(QString const & boxName, QString const & firstButton, QString const & secondButton, QWidget *parent)
+	: QWidget(parent),
+	mDefaultExt{"Xtract"}
 {
 	mGroupBox = new QGroupBox(boxName);
 	mXtractExt = new QRadioButton(firstButton);
 	mOtherExt = new QRadioButton(secondButton);
-	mExtension = new QLineEdit(extension);	
+	mExtension = new QLineEdit();	
 	QGridLayout * grid = new QGridLayout;
 	QBoxLayout * layout = new QBoxLayout(QBoxLayout::Up);
 	grid->addWidget(mXtractExt, 0, 0);
@@ -38,5 +40,18 @@ void QFileExtensionManager::widgetInitialization(void)
 }
 
 QString QFileExtensionManager::getExtension(void) {
-	return mExtension->text();
+	if (mXtractExt->isChecked())
+	{
+		return "." + mDefaultExt;
+	}
+	else {
+		if (mExtension->text().isEmpty())
+		{
+			throw std::invalid_argument("L'extension spécifié est invalide");
+		}
+		else
+		{
+			return "." + mExtension->text();
+		}
+	}
 }
