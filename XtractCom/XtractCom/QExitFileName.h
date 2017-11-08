@@ -15,6 +15,8 @@ class QExitFileName : public QWidget
 
 public:
 	QExitFileName(QWidget *parent=nullptr);
+	QStringList boxIsValid(void);
+
 
 protected:
 	QLabel * mFilePrefixLabel;

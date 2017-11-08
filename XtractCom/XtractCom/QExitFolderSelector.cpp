@@ -57,3 +57,8 @@ void QExitFolderSelector::getDirectoryPath()
 
 
 }
+
+QStringList QExitFolderSelector::boxIsValid(void)
+{
+	return QStringList();
+}

@@ -69,3 +69,8 @@ QExitFileName::QExitFileName(QWidget * parent)
 	connect(mUseNewNameButton, &QRadioButton::toggled, mStartNumberingBox, &QSpinBox::setEnabled);
 
 }
+
+QStringList QExitFileName::boxIsValid(void)
+{
+	return QStringList();
+}

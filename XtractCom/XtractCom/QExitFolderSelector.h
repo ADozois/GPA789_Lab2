@@ -16,6 +16,9 @@ class QExitFolderSelector : public QWidget
 
 public:
 	QExitFolderSelector(QWidget * parent = nullptr);
+	QStringList boxIsValid(void);
+
+
 protected:
 	QGroupBox * mGroupBoxExitFolder;
 	QPushButton * mSelectButton;
