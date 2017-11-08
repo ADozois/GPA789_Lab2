@@ -14,8 +14,6 @@ class QFileExtensionManager : public QWidget
 public:
 	QFileExtensionManager(QString const & boxName, QString const & firstButton, QString const & secondButton, QWidget *parent = nullptr);
 	~QFileExtensionManager();
-
-	public slots:
 	QString getExtension(void);
 
 private:
