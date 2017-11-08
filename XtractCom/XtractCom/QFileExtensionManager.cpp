@@ -5,13 +5,19 @@
 #include <QGridLayout>
 #include <stdexcept>
 
-QFileExtensionManager::QFileExtensionManager(QString const & boxName, QString const & firstButton, QString const & secondButton, QWidget *parent)
-	: QWidget(parent),
-	mDefaultExt{"Xtract"}
+const QString QFileExtensionManager::mDefaultExt{"Xtract"};
+const QString QFileExtensionManager::mBoxName{"Extension du fichier de sortie"};
+const QString QFileExtensionManager::mFirstButtonName{"Utiliser l'extension: Xtract"};
+const QString QFileExtensionManager::mSecondButtonName{ "Spécifier l'extension" };
+const QString QFileExtensionManager::mExtEmpty{ "L'extension est vide" };
+
+
+QFileExtensionManager::QFileExtensionManager(QWidget *parent)
+	: QWidget(parent)
 {
-	mGroupBox = new QGroupBox(boxName);
-	mXtractExt = new QRadioButton(firstButton);
-	mOtherExt = new QRadioButton(secondButton);
+	mGroupBox = new QGroupBox(mBoxName);
+	mXtractExt = new QRadioButton(mFirstButtonName);
+	mOtherExt = new QRadioButton(mSecondButtonName);
 	mExtension = new QLineEdit();	
 	QGridLayout * grid = new QGridLayout;
 	QBoxLayout * layout = new QBoxLayout(QBoxLayout::Up);
@@ -29,10 +35,6 @@ QFileExtensionManager::QFileExtensionManager(QString const & boxName, QString co
 
 }
 
-QFileExtensionManager::~QFileExtensionManager()
-{
-}
-
 void QFileExtensionManager::widgetInitialization(void)
 {
 	mXtractExt->click();
@@ -45,13 +47,20 @@ QString QFileExtensionManager::getExtension(void) {
 		return "." + mDefaultExt;
 	}
 	else {
-		if (mExtension->text().isEmpty())
-		{
-			throw std::invalid_argument("L'extension spécifié est invalide");
+		return "." + mExtension->text();
+	}		
+}
+
+QStringList QFileExtensionManager::boxIsValid(void)
+{
+	QStringList mErrors;
+	if (mOtherExt->isChecked())
+	{
+		if (mExtension->text().isEmpty()) {
+			mErrors.append(mExtEmpty);
+			return mErrors;
 		}
-		else
-		{
-			return "." + mExtension->text();
-		}
+		return mErrors;
 	}
+	return mErrors;
 }

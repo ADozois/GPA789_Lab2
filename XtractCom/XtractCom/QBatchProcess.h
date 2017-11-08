@@ -15,9 +15,15 @@ public:
 	QBatchProcess(QFileExplorer const & fileExplorer,QWidget *parent);
 	~QBatchProcess();
 
+public slots:
+void generate(bool checked);
+
 private:
 	QFileSelector * mFileSelect;
 	QFileManager * mFileManager;
+
+	bool checkGenerateValid(void);
+
 
 };
 

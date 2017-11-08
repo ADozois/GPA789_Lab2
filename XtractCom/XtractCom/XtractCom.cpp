@@ -26,7 +26,7 @@ XtractCom::XtractCom(QWidget *parent)
 	mSupplements = new QSupplements;
 
 	//Creation du generation lot
-	mBatchProcess = new QBatchProcess(mQFileExplorer, parent);
+	mBatchProcess = new QBatchProcess(*mQFileExplorer, parent);
 
 
 

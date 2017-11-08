@@ -19,3 +19,13 @@ QBatchProcess::QBatchProcess(QFileExplorer const & fileExplorer, QWidget *parent
 QBatchProcess::~QBatchProcess()
 {
 }
+
+bool QBatchProcess::checkGenerateValid(void)
+{
+	return true;
+}
+
+
+void QBatchProcess::generate(bool checked) {
+
+}

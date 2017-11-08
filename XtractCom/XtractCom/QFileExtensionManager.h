@@ -12,9 +12,10 @@ class QFileExtensionManager : public QWidget
 	Q_OBJECT
 
 public:
-	QFileExtensionManager(QString const & boxName, QString const & firstButton, QString const & secondButton, QWidget *parent = nullptr);
-	~QFileExtensionManager();
+	QFileExtensionManager(QWidget *parent = nullptr);
+	~QFileExtensionManager()=default;
 	QString getExtension(void);
+	QStringList boxIsValid(void);
 
 private:
 	QGroupBox * mGroupBox;
@@ -22,8 +23,12 @@ private:
 	QRadioButton * mOtherExt;
 	QLineEdit * mExtension;
 
-	QString const mDefaultExt;
-
+	static const QString mDefaultExt;
+	static const QString mBoxName;
+	static const QString mFirstButtonName;
+	static const QString mSecondButtonName;
+	static const QString mExtEmpty;
+	
 	void widgetInitialization(void);
 };
 
