@@ -177,15 +177,6 @@
     <ClCompile Include="GeneratedFiles\Release\moc_QExitFileName.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_QGenerateButton.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_QGenerateButton.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QGenerateButton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="XtractCom.h">
@@ -240,9 +231,6 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="QExitFileName.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="QGenerateButton.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
