@@ -6,15 +6,22 @@
 #include <QGridLayout>
 #include <qfiledialog.h>
 
+const QString QExitFolderSelector::mGroupBoxName{ "Dossier de sortie" };
+const QString QExitFolderSelector::mRadioButtonSourceFolderName{ "Utiliser le dossier source" };
+const QString QExitFolderSelector::mRadioButtonNewFolderName{ "Spécifié un dossier de sortie" };
+const QString QExitFolderSelector::mFolderPathLabelInit{ "No path selected" };
+const QString QExitFolderSelector::mSelectButtonName{ "Sélectionner" };
+const QString QExitFolderSelector::mNoFileSelectedText{ "No path selected" };
+
 QExitFolderSelector::QExitFolderSelector(QWidget * parent)
 	:QWidget(parent)
 {
 
-	mGroupBoxExitFolder = new QGroupBox("Dossier de sortie");
-	mRadioButtonSourceFolder = new QRadioButton("Utiliser le dossier source");
-	mRadioButtonNewFolder = new QRadioButton("Spécifié un dossier de sortie");
-	mFolderPathLabel = new QLabel("No path selected");
-	mSelectButton = new QPushButton("Sélectionner");
+	mGroupBoxExitFolder = new QGroupBox(mGroupBoxName);
+	mRadioButtonSourceFolder = new QRadioButton(mRadioButtonSourceFolderName);
+	mRadioButtonNewFolder = new QRadioButton(mRadioButtonNewFolderName);
+	mFolderPathLabel = new QLabel(mFolderPathLabelInit);
+	mSelectButton = new QPushButton(mSelectButtonName);
 	mRadioButtonSourceFolder->setChecked(true);
 	mSelectButton->setEnabled(false);
 
@@ -41,7 +48,7 @@ void QExitFolderSelector::getDirectoryPath()
 
 	if (directory.isEmpty())
 	{
-		mFolderPathLabel->setText("No path selected");
+		mFolderPathLabel->setText(mNoFileSelectedText);
 	}
 	else
 	{

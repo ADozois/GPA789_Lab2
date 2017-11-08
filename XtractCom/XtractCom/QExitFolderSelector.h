@@ -23,8 +23,19 @@ protected:
 	QRadioButton * mRadioButtonNewFolder;
 	QLabel * mFolderPathLabel;
 
+
+private:
+	static const QString mGroupBoxName;
+	static const QString mRadioButtonSourceFolderName;
+	static const QString mRadioButtonNewFolderName;
+	static const QString mFolderPathLabelInit;
+	static const QString mSelectButtonName;
+	static const QString mNoFileSelectedText;
+
 	protected slots:
 	void getDirectoryPath();
+public:
+	QString 
 
 };
 

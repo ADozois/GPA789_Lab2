@@ -16,15 +16,24 @@ class QExitFileName : public QWidget
 public:
 	QExitFileName(QWidget *parent);
 
-private:
+protected:
 	QLabel * mFilePrefixLabel;
 	QLabel * mNumberingLabel;
 	QGroupBox * mFileNameGroupBox;
 	QRadioButton * mUseSameNameButton;
 	QRadioButton * mUseNewNameButton;
 	QLineEdit * mNewName;
-	QSpinBox * mStartNumberingBox;
+	QSpinBox * mSpinBox;
 
+private:
+
+	static const QString mFilePrefixLabelInit;
+	static const QString mNumberingLabelInit;
+	static const QString mFileNameGroupBoxName;
+	static const QString mUseSameNameButtonInit;
+	static const QString mUseNewNameButtonInit;
+	static const int mSpinBoxMaxValue{ 999 };
+	static const int mSpinBoxMinValue{ 0 };
 };
 
 
