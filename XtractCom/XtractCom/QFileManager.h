@@ -5,6 +5,7 @@
 
 class QExitFolderSelector;
 class QFileExtensionManager;
+class QExitFileName;
 
 class QFileManager : public QWidget
 {
@@ -17,6 +18,7 @@ private:
 
 	QExitFolderSelector * mExitFolderSelector;
 	QFileExtensionManager * mFileExtensionManager;
+	QExitFileName * mExitFileNameManager;
 
 };
 

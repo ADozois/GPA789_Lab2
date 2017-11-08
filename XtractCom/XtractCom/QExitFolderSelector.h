@@ -34,8 +34,6 @@ private:
 
 	protected slots:
 	void getDirectoryPath();
-public:
-	QString 
 
 };
 

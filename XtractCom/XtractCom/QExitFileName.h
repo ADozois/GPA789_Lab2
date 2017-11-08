@@ -14,7 +14,7 @@ class QExitFileName : public QWidget
 	Q_OBJECT
 
 public:
-	QExitFileName(QWidget *parent);
+	QExitFileName(QWidget *parent=nullptr);
 
 protected:
 	QLabel * mFilePrefixLabel;

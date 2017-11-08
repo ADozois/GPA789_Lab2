@@ -8,11 +8,11 @@
 #include <qvboxlayout>
 #include <qhboxLayout>
 
-const QString mFilePrefixLabelInit{"Utiliser le même nom de fichier"};
-const QString mNumberingLabelInit{"Utiliser un nom de fichier avec numérotation automatique"};
-const QString mFileNameGroupBoxName{"Nom du fichier de sortie"};
-const QString mUseSameNameButtonInit{ "Utiliser le même nom de fichier" };
-const QString mUseNewNameButtonInit{ "Utiliser un nom de fichier avec numérotation automatique" };
+const QString QExitFileName::mFilePrefixLabelInit{"Utiliser le mÃªme nom de fichier"};
+const QString QExitFileName::mNumberingLabelInit{ "DÃ©buter la numÃ©rotation Ã  " };
+const QString QExitFileName::mFileNameGroupBoxName{"Nom du fichier de sortie"};
+const QString QExitFileName::mUseSameNameButtonInit{ "Utiliser le mÃªme nom de fichier" };
+const QString QExitFileName::mUseNewNameButtonInit{ "Utiliser un nom de fichier avec numÃ©rotation automatique" };
 
 
 QExitFileName::QExitFileName(QWidget * parent)
