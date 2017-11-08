@@ -14,10 +14,11 @@ class QBatchProcess : public QWidget
 
 public:
 	QBatchProcess(QFileExplorer const & fileExplorer,QWidget *parent);
-	~QBatchProcess();
+	~QBatchProcess()=default;
 
 public slots:
-void generate(bool checked);
+	void generate(bool checked);
+	void listChanged(void);
 
 private:
 	QFileSelector * mFileSelect;

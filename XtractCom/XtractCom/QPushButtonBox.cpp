@@ -13,11 +13,20 @@ QPushButtonBox::QPushButtonBox(QWidget *parent)
 	hLayout->addStretch();
 	hLayout->addWidget(mPushButton);
 	setLayout(hLayout);
-
+	mPushButton->setDisabled(true);
 	connect(mPushButton, &QPushButton::clicked, this, &QPushButtonBox::buttonClicked);
 }
 
 void QPushButtonBox::buttonClicked(bool checked) {
 	emit clicked(checked);
 }
+
+void QPushButtonBox::enableButton(bool state) {
+	mPushButton->setEnabled(state);
+}
+
+void QPushButtonBox::disableButton(bool state) {
+	mPushButton->setDisabled(state);
+}
+
 

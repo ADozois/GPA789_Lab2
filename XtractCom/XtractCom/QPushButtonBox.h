@@ -18,6 +18,9 @@ signals:
 
 public slots:
 	void buttonClicked(bool checked);
+	void enableButton(bool state);
+	void disableButton(bool state);
+
 
 	
 private:
