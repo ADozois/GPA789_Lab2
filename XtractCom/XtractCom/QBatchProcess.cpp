@@ -40,7 +40,7 @@ bool QBatchProcess::checkGenerateValid(void)
 		errorsBox.setText("Une erreur c'est produite");
 		for (auto const error: errors)
 		{
-			errorsBox.setInformativeText("- " + error);
+			errorsBox.setInformativeText("- " + error + "\n");
 		}
 		int result = errorsBox.exec();
 		return false;
