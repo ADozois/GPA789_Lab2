@@ -12,9 +12,9 @@ QExitFolderSelector::QExitFolderSelector(QWidget * parent)
 
 	mGroupBoxExitFolder = new QGroupBox("Dossier de sortie");
 	mRadioButtonSourceFolder = new QRadioButton("Utiliser le dossier source");
-	mRadioButtonNewFolder = new QRadioButton("Spécifié un dossier de sortie");
+	mRadioButtonNewFolder = new QRadioButton("SpÃ©cifiÃ© un dossier de sortie");
 	mFolderPathLabel = new QLabel("No path selected");
-	mSelectButton = new QPushButton("Sélectionner");
+	mSelectButton = new QPushButton("SÃ©lectionner");
 	mRadioButtonSourceFolder->setChecked(true);
 	mSelectButton->setEnabled(false);
 

@@ -5,6 +5,7 @@
 
 class QFileSelector;
 class QFileExplorer;
+class QFileManager;
 
 class QBatchProcess : public QWidget
 {
@@ -16,6 +17,7 @@ public:
 
 private:
 	QFileSelector * mFileSelect;
+	QFileManager * mFileManager;
 
 };
 
