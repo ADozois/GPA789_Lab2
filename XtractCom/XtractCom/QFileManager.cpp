@@ -22,3 +22,12 @@ QFileManager::QFileManager(QWidget * parent)
 
 
 }
+
+QStringList QFileManager::optionsValid(void)
+{
+	QStringList errorsList;
+	errorsList.append(mExitFileNameManager->boxIsValid());
+	errorsList.append(mFileExtensionManager->boxIsValid());
+	errorsList.append(mExitFolderSelector->boxIsValid());
+	return errorsList;
+}

@@ -13,6 +13,7 @@ class QFileManager : public QWidget
 
 public:
 	QFileManager(QWidget * parent = nullptr);
+	QStringList optionsValid(void);
 
 private:
 

@@ -6,6 +6,7 @@
 class QFileSelector;
 class QFileExplorer;
 class QFileManager;
+class QPushButtonBox;
 
 class QBatchProcess : public QWidget
 {
@@ -21,6 +22,7 @@ void generate(bool checked);
 private:
 	QFileSelector * mFileSelect;
 	QFileManager * mFileManager;
+	QPushButtonBox * mGenerateButton;
 
 	bool checkGenerateValid(void);
 
