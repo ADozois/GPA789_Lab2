@@ -48,7 +48,24 @@ QExitFileName::QExitFileName(QWidget * parent)
 	mainGridLayout->addLayout(subPart1Layout);
 	mainGridLayout->addLayout(subPart2Layout);
 
-	setLayout(mainGridLayout);
+	//Put layout inside the GroupBox
+	mFileNameGroupBox->setLayout(mainGridLayout);
 
+	QGridLayout * finalLayout = new QGridLayout;
+	finalLayout->addWidget(mFileNameGroupBox);
+	setLayout(finalLayout);
+
+	//Initial state of widget
+	mUseSameNameButton->setChecked(true);
+	mFilePrefixLabel->setEnabled(false);
+	mNumberingLabel->setEnabled(false);
+	mNewName->setEnabled(false);
+	mStartNumberingBox->setEnabled(false);
+
+	//Define which option is available or not depending on radio button selected
+	connect(mUseNewNameButton, &QRadioButton::toggled, mFilePrefixLabel, &QLabel::setEnabled);
+	connect(mUseNewNameButton, &QRadioButton::toggled, mNumberingLabel, &QLabel::setEnabled);
+	connect(mUseNewNameButton, &QRadioButton::toggled, mNewName, &QLineEdit::setEnabled);   
+	connect(mUseNewNameButton, &QRadioButton::toggled, mStartNumberingBox, &QSpinBox::setEnabled);
 
 }
