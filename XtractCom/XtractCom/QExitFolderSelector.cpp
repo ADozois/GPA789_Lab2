@@ -9,9 +9,9 @@
 const QString QExitFolderSelector::mGroupBoxName{ "Dossier de sortie" };
 const QString QExitFolderSelector::mRadioButtonSourceFolderName{ "Utiliser le dossier source" };
 const QString QExitFolderSelector::mRadioButtonNewFolderName{ "Spécifié un dossier de sortie" };
-const QString QExitFolderSelector::mFolderPathLabelInit{ "No path selected" };
+const QString QExitFolderSelector::mFolderPathLabelInit{ "Aucun dossier de sortie n'est sélectionné." };
 const QString QExitFolderSelector::mSelectButtonName{ "Sélectionner" };
-const QString QExitFolderSelector::mNoFileSelectedText{ "No path selected" };
+
 
 QExitFolderSelector::QExitFolderSelector(QWidget * parent)
 	:QWidget(parent)
@@ -24,8 +24,9 @@ QExitFolderSelector::QExitFolderSelector(QWidget * parent)
 	mSelectButton = new QPushButton(mSelectButtonName);
 	mRadioButtonSourceFolder->setChecked(true);
 	mSelectButton->setEnabled(false);
-
+	mFolderPathLabel->setVisible(false);
 	connect(mRadioButtonNewFolder, &QRadioButton::toggled, mSelectButton, &QPushButton::setEnabled);
+	connect(mRadioButtonNewFolder, &QRadioButton::toggled, mFolderPathLabel, &QLabel::setVisible);
 	connect(mSelectButton, &QPushButton::clicked, this, &QExitFolderSelector::getDirectoryPath);
 
 	QGridLayout * gridLayout = new QGridLayout;
@@ -48,7 +49,7 @@ void QExitFolderSelector::getDirectoryPath()
 
 	if (directory.isEmpty())
 	{
-		mFolderPathLabel->setText(mNoFileSelectedText);
+		mFolderPathLabel->setText(mFolderPathLabelInit);
 	}
 	else
 	{
@@ -60,5 +61,17 @@ void QExitFolderSelector::getDirectoryPath()
 
 QStringList QExitFolderSelector::boxIsValid(void)
 {
-	return QStringList();
+	QStringList mErrors;
+
+	//On regarde si on veux spécifié le pdossier de sortie
+	if (mRadioButtonNewFolder->isChecked())
+	{
+		QString text = mFolderPathLabel->text();
+		if (!(QString::compare(mFolderPathLabel->text(), mFolderPathLabelInit)))
+		{
+			mErrors.append(mFolderPathLabelInit);
+		}
+	}
+
+	return mErrors;
 }
