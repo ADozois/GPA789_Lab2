@@ -11,7 +11,7 @@ const QString QExitFolderSelector::mRadioButtonSourceFolderName{ "Utiliser le do
 const QString QExitFolderSelector::mRadioButtonNewFolderName{ "Spécifié un dossier de sortie" };
 const QString QExitFolderSelector::mFolderPathLabelInit{ "Aucun dossier de sortie n'est sélectionné." };
 const QString QExitFolderSelector::mSelectButtonName{ "Sélectionner" };
-const QString QExitFolderSelector::mInvalidDirstoryText{ "Le dossier de sortie sélectionné n'existe plus." };
+const QString QExitFolderSelector::mInvalidDirstoryText{ "Le dossier de sortie sélectionné n'existe plus ou ne permet pas l'écriture." };
 
 
 QExitFolderSelector::QExitFolderSelector(QWidget * parent)
@@ -46,15 +46,19 @@ QExitFolderSelector::QExitFolderSelector(QWidget * parent)
 
 void QExitFolderSelector::getDirectoryPath()
 {
-	QUrl directory = QFileDialog::getExistingDirectoryUrl();
+	QString dir = QFileDialog::getExistingDirectory(this, tr("Open Directory"),
+		"/home",
+		QFileDialog::ShowDirsOnly
+		| QFileDialog::DontResolveSymlinks);
 
-	if (directory.isEmpty())
+	if (dir.isEmpty())
 	{
 		mFolderPathLabel->setText(mFolderPathLabelInit);
 	}
 	else
 	{
-		mFolderPathLabel->setText(directory.toString());
+
+		mFolderPathLabel->setText(dir);
 	}
 
 
@@ -75,17 +79,12 @@ QStringList QExitFolderSelector::boxIsValid(void)
 		}
 		else
 		{
-			QDir directory(mFolderPathLabel->text());
-			//QFileInfo checkDirectory(mFolderPathLabel->text());
-			//On valide que le folder existe toujours
-			/*checkDirectory.setFile(mFolderPathLabel->text());*/
-			if (!directory.exists())
+
+			const QFileInfo outputDir(mFolderPathLabel->text());
+			if ((!outputDir.exists()) || (!outputDir.isDir()) || (!outputDir.isWritable()))
 			{
 				mErrors.append(mInvalidDirstoryText);
 			}
-			/*if (!checkDirectory.isDir()) {
-				mErrors.append(mInvalidDirstoryText);
-			}*/
 		}
 	}
 
