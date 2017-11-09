@@ -17,6 +17,7 @@ QFileManager::QFileManager(QWidget * parent)
 	vLayout->addWidget(mExitFolderSelector);
 	vLayout->addWidget(mExitFileNameManager);
 	vLayout->addWidget(mFileExtensionManager);
+	vLayout->addStretch();
 	setLayout(vLayout);
 
 }
@@ -24,9 +25,10 @@ QFileManager::QFileManager(QWidget * parent)
 bool QFileManager::optionsValid(void)
 {
 	QStringList errorsList;
+	errorsList.append(mExitFolderSelector->boxIsValid());
 	errorsList.append(mExitFileNameManager->boxIsValid());
 	errorsList.append(mFileExtensionManager->boxIsValid());
-	errorsList.append(mExitFolderSelector->boxIsValid());
+	
 
 	if (errorsList.isEmpty())
 	{
@@ -41,11 +43,14 @@ bool QFileManager::optionsValid(void)
 void QFileManager::showErrors(QStringList const & errorsList)
 {
 	QMessageBox errorsBox;
+	QString finalMessage;
 	errorsBox.setText("Une erreur c'est produite");
 	for (auto const error : errorsList)
 	{
-		errorsBox.setInformativeText("- " + error + "\n");
+
+		finalMessage.append("- " + error + "\n");
 	}
+	errorsBox.setInformativeText(finalMessage);
 	int result = errorsBox.exec();
 	
 }
