@@ -34,6 +34,7 @@ private:
 	static const QString mFileNameGroupBoxName;
 	static const QString mUseSameNameButtonInit;
 	static const QString mUseNewNameButtonInit;
+	static const QString mExitFileNameEmpty;
 	static const int mSpinBoxMaxValue{ 999 };
 	static const int mSpinBoxMinValue{ 0 };
 };

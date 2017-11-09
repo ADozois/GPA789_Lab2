@@ -13,6 +13,7 @@ const QString QExitFileName::mNumberingLabelInit{ "Débuter la numérotation à 
 const QString QExitFileName::mFileNameGroupBoxName{"Nom du fichier de sortie"};
 const QString QExitFileName::mUseSameNameButtonInit{ "Utiliser le même nom de fichier" };
 const QString QExitFileName::mUseNewNameButtonInit{ "Utiliser un nom de fichier avec numérotation automatique" };
+const QString QExitFileName::mExitFileNameEmpty{ "Aucun nom de fichier de sortie spécifié." };
 
 
 QExitFileName::QExitFileName(QWidget * parent)
@@ -20,17 +21,17 @@ QExitFileName::QExitFileName(QWidget * parent)
 {
 	//Widget creation and initialisation
 
-	QLabel * mFilePrefixLabel= new QLabel(mFilePrefixLabelInit);
-	QLabel *mNumberingLabel=new QLabel(mNumberingLabelInit);
-	QGroupBox *	mFileNameGroupBox = new QGroupBox(mFileNameGroupBoxName);
-	QRadioButton * mUseSameNameButton = new QRadioButton(mUseSameNameButtonInit);
-	QRadioButton * mUseNewNameButton = new QRadioButton(mUseNewNameButtonInit);
-	QLineEdit * mNewName = new QLineEdit;
+	mFilePrefixLabel= new QLabel(mFilePrefixLabelInit);
+	mNumberingLabel=new QLabel(mNumberingLabelInit);
+	mFileNameGroupBox = new QGroupBox(mFileNameGroupBoxName);
+	mUseSameNameButton = new QRadioButton(mUseSameNameButtonInit);
+	mUseNewNameButton = new QRadioButton(mUseNewNameButtonInit);
+	mNewName = new QLineEdit;
 	
 
 	//Spin box initialisation
-	QSpinBox *	mStartNumberingBox = new QSpinBox;
-	mStartNumberingBox->setRange(mSpinBoxMinValue, mSpinBoxMaxValue);
+	mSpinBox = new QSpinBox;
+	mSpinBox->setRange(mSpinBoxMinValue, mSpinBoxMaxValue);
 
 	//Widget placement inside 
 	QHBoxLayout * subPart1Layout = new QHBoxLayout;
@@ -39,7 +40,7 @@ QExitFileName::QExitFileName(QWidget * parent)
 
 	QHBoxLayout * subPart2Layout = new QHBoxLayout;
 	subPart2Layout->addWidget(mNumberingLabel);
-	subPart2Layout->addWidget(mStartNumberingBox);
+	subPart2Layout->addWidget(mSpinBox);
 
 
 	QVBoxLayout * mainGridLayout = new QVBoxLayout;
@@ -60,17 +61,27 @@ QExitFileName::QExitFileName(QWidget * parent)
 	mFilePrefixLabel->setEnabled(false);
 	mNumberingLabel->setEnabled(false);
 	mNewName->setEnabled(false);
-	mStartNumberingBox->setEnabled(false);
+	mSpinBox->setEnabled(false);
 
 	//Define which option is available or not depending on radio button selected
 	connect(mUseNewNameButton, &QRadioButton::toggled, mFilePrefixLabel, &QLabel::setEnabled);
 	connect(mUseNewNameButton, &QRadioButton::toggled, mNumberingLabel, &QLabel::setEnabled);
 	connect(mUseNewNameButton, &QRadioButton::toggled, mNewName, &QLineEdit::setEnabled);   
-	connect(mUseNewNameButton, &QRadioButton::toggled, mStartNumberingBox, &QSpinBox::setEnabled);
+	connect(mUseNewNameButton, &QRadioButton::toggled, mSpinBox, &QSpinBox::setEnabled);
 
 }
 
 QStringList QExitFileName::boxIsValid(void)
 {
-	return QStringList();
+	QStringList mErrors;
+
+	//Check which radio button is checked
+	if (mUseNewNameButton->isChecked())
+	{
+		if (mNewName->text().isEmpty())
+		{
+			mErrors.append(mExitFileNameEmpty);
+		}
+	}
+	return mErrors;
 }
