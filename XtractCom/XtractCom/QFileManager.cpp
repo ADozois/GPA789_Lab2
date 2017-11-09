@@ -2,6 +2,7 @@
 #include "QExitFolderSelector.h"
 #include "QFileExtensionManager.h"
 #include "QExitFileName.h"
+#include "QAdditionnalOption.h"
 #include <QVBoxLayout>
 #include <QMessageBox>
 
@@ -12,11 +13,13 @@ QFileManager::QFileManager(QWidget * parent)
 	mExitFolderSelector = new QExitFolderSelector;
 	mFileExtensionManager = new QFileExtensionManager;
 	mExitFileNameManager = new QExitFileName;
+	mAdditionnalOptionBox = new QAdditionnalOption;
 	QVBoxLayout * vLayout = new QVBoxLayout;
 
 	vLayout->addWidget(mExitFolderSelector);
 	vLayout->addWidget(mExitFileNameManager);
 	vLayout->addWidget(mFileExtensionManager);
+	vLayout->addWidget(mAdditionnalOptionBox);
 	vLayout->addStretch();
 	setLayout(vLayout);
 

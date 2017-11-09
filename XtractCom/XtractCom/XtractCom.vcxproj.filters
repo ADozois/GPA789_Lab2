@@ -186,6 +186,15 @@
     <ClCompile Include="QPushButtonBox.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="QAdditionnalOption.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QAdditionnalOption.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QAdditionnalOption.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="XtractCom.h">
@@ -243,6 +252,9 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="QPushButtonBox.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="QAdditionnalOption.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
