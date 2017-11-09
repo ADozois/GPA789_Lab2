@@ -1,12 +1,14 @@
 #ifndef Q_GENERATION_LOT_H
 #define Q_GENERATION_LOT_H
 
+#include "XtractC.h"
 #include <QWidget>
 
 class QFileSelector;
 class QFileExplorer;
 class QFileManager;
 class QPushButtonBox;
+
 
 class QBatchProcess : public QWidget
 {
@@ -24,10 +26,12 @@ private:
 	QFileSelector * mFileSelect;
 	QFileManager * mFileManager;
 	QPushButtonBox * mGenerateButton;
+	XtractC Xtract;
+	
 
 	bool checkGenerateValid(void);
 	void cleanList(QStringList & filesList);
-
+	void extract(QString fileName);
 };
 
 #endif // !Q_GENERATION_LOT_H

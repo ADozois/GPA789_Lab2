@@ -16,6 +16,11 @@ public:
 	QFileManager(QWidget * parent = nullptr);
 	bool optionsValid(void);
 	void showErrors(QStringList const & errorsList);
+	bool wantStats(void);
+	QString getFolder(void);
+	QStringList getFile(void);
+	QString getExtension(void);
+
 
 private:
 

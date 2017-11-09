@@ -57,3 +57,23 @@ void QFileManager::showErrors(QStringList const & errorsList)
 	int result = errorsBox.exec();
 	
 }
+
+bool QFileManager::wantStats(void)
+{
+	return false;
+}
+
+QString QFileManager::getFolder(void)
+{
+	return mExitFolderSelector->getFolder();
+}
+
+QStringList QFileManager::getFile(void)
+{
+	return mExitFileNameManager->getFileOptions();
+}
+
+QString QFileManager::getExtension(void)
+{
+	return mFileExtensionManager->getExtension();
+}

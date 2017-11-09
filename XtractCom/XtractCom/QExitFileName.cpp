@@ -85,3 +85,17 @@ QStringList QExitFileName::boxIsValid(void)
 	}
 	return mErrors;
 }
+
+QStringList QExitFileName::getFileOptions(void)
+{
+	QStringList options;
+	if (mUseSameNameButton->isChecked())
+	{
+		return options;
+	}
+	else {
+		options.append(mNewName->text());
+		options.append(mSpinBox->text());
+		return options;
+	}
+}

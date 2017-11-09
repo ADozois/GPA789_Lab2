@@ -75,3 +75,8 @@ QStringList QExitFolderSelector::boxIsValid(void)
 
 	return mErrors;
 }
+
+QString QExitFolderSelector::getFolder(void)
+{
+	return mFolderPathLabel->text();
+}

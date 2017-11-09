@@ -17,6 +17,7 @@ class QExitFolderSelector : public QWidget
 public:
 	QExitFolderSelector(QWidget * parent = nullptr);
 	QStringList boxIsValid(void);
+	QString getFolder(void);
 
 
 protected:

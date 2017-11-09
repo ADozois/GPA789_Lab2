@@ -5,6 +5,13 @@
 #include "QPushButtonBox.h"
 #include <QGridLayout>
 #include <QFileInfo>
+#include <QFileDialog>
+#include <QMessageBox>
+
+
+#include <sstream>
+
+
 
 
 QBatchProcess::QBatchProcess(QFileExplorer const & fileExplorer, QWidget *parent)
@@ -35,6 +42,10 @@ void QBatchProcess::generate(bool checked) {
 	{
 		QStringList files = mFileSelect->selectedFiles();
 		cleanList(files);
+		for (auto const & file: files)
+		{
+			extract(file);
+		}
 	}
 	
 }
@@ -60,4 +71,52 @@ void QBatchProcess::cleanList(QStringList & filesList) {
 		}
 		++index;
 	}
+}
+
+void QBatchProcess::extract(QString fileName)
+{
+	QString folder, file, extension;
+	QStringList fileOptions;
+	folder = mFileManager->getFolder();
+	fileOptions = mFileManager->getFile();
+	extension = mFileManager->getExtension();
+	if (folder == "No path selected")
+	{
+		folder = QFileDialog::getExistingDirectoryUrl().toString();
+	}
+	if (fileOptions.isEmpty())
+	{
+		file = fileName;
+	}
+	else
+	{
+		file = fileOptions.at(0) + fileOptions.at(1);
+	}
+
+	try
+	{
+		std::stringstream inputFile(fileName.toStdString());
+		std::stringstream outputFile(folder.toStdString() + file.toStdString() + extension.toStdString());
+
+		Xtract.setup(inputFile, outputFile);
+		Xtract.process(false);
+	}
+	catch (XtractC::ParamException const & exception)
+	{	
+		QMessageBox box;
+		box.setInformativeText(QString::fromStdString(exception.what()));
+		box.exec();
+	}
+	catch (XtractC::Exception const & exception) {
+		QMessageBox box;
+		box.setInformativeText(QString::fromStdString(exception.what()));
+		box.exec();
+	}
+	catch (exception const & exception) {
+		QMessageBox box;
+		box.setInformativeText(QString::fromStdString(exception.what()));
+		box.exec();
+	}
+
+	
 }
