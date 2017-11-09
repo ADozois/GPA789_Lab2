@@ -26,7 +26,7 @@ private:
 	QPushButtonBox * mGenerateButton;
 
 	bool checkGenerateValid(void);
-
+	void cleanList(QStringList & filesList);
 
 };
 

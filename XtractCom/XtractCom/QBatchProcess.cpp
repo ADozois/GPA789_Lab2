@@ -5,6 +5,7 @@
 #include "QPushButtonBox.h"
 #include <QGridLayout>
 #include <QMessageBox>
+#include <QFileInfo>
 
 
 QBatchProcess::QBatchProcess(QFileExplorer const & fileExplorer, QWidget *parent)
@@ -46,8 +47,11 @@ bool QBatchProcess::checkGenerateValid(void)
 
 
 void QBatchProcess::generate(bool checked) {
-	bool test = false;
-	test = checkGenerateValid();
+	if (checkGenerateValid())
+	{
+		cleanList(mFileSelect->selectedFiles());
+	}
+	
 }
 
 void QBatchProcess::listChanged(void) {
@@ -57,5 +61,18 @@ void QBatchProcess::listChanged(void) {
 	else
 	{
 		mGenerateButton->enableButton(true);
+	}
+}
+
+void QBatchProcess::cleanList(QStringList & filesList) {
+	QFileInfo checkFile;
+	int index = 0;
+	for (auto const file : filesList)
+	{
+		checkFile.setFile(file);
+		if (!checkFile.isFile()) {
+			filesList.removeAt(index);
+		}
+		++index;
 	}
 }
