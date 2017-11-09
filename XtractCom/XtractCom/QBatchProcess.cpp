@@ -21,7 +21,7 @@ QBatchProcess::QBatchProcess(QFileExplorer const & fileExplorer, QWidget *parent
 	
 	setLayout(gridLayout);
 
-	connect(mGenerateButton, &QPushButtonBox::clicked, this, &QBatchProcess::checkGenerateValid);
+	connect(mGenerateButton, &QPushButtonBox::clicked, this, &QBatchProcess::generate);
 	connect(mFileSelect, &QFileSelector::listChanged, this, &QBatchProcess::listChanged);
 }
 
@@ -49,7 +49,8 @@ bool QBatchProcess::checkGenerateValid(void)
 void QBatchProcess::generate(bool checked) {
 	if (checkGenerateValid())
 	{
-		cleanList(mFileSelect->selectedFiles());
+		QStringList files = mFileSelect->selectedFiles();
+		cleanList(files);
 	}
 	
 }
