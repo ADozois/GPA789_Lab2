@@ -34,6 +34,7 @@ private:
 	static const QString mRadioButtonNewFolderName;
 	static const QString mFolderPathLabelInit;
 	static const QString mSelectButtonName;
+	static const QString mInvalidDirstoryText;
 
 	protected slots:
 	void getDirectoryPath();
