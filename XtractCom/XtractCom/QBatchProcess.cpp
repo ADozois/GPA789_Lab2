@@ -4,7 +4,6 @@
 #include "QFileManager.h"
 #include "QPushButtonBox.h"
 #include <QGridLayout>
-#include <QMessageBox>
 #include <QFileInfo>
 
 
@@ -27,22 +26,7 @@ QBatchProcess::QBatchProcess(QFileExplorer const & fileExplorer, QWidget *parent
 
 bool QBatchProcess::checkGenerateValid(void)
 {
-	QStringList errors;
-	errors = mFileManager->optionsValid();
-	if (errors.isEmpty())
-	{
-		return true;
-	}
-	else {
-		QMessageBox errorsBox;
-		errorsBox.setText("Une erreur c'est produite");
-		for (auto const error: errors)
-		{
-			errorsBox.setInformativeText("- " + error + "\n");
-		}
-		int result = errorsBox.exec();
-		return false;
-	}
+	return mFileManager->optionsValid();
 }
 
 

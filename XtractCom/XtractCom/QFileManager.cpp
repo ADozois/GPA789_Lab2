@@ -2,7 +2,8 @@
 #include "QExitFolderSelector.h"
 #include "QFileExtensionManager.h"
 #include "QExitFileName.h"
-#include <qvboxlayout>
+#include <QVBoxLayout>
+#include <QMessageBox>
 
 
 QFileManager::QFileManager(QWidget * parent)
@@ -18,16 +19,33 @@ QFileManager::QFileManager(QWidget * parent)
 	vLayout->addWidget(mFileExtensionManager);
 	setLayout(vLayout);
 
-
-
-
 }
 
-QStringList QFileManager::optionsValid(void)
+bool QFileManager::optionsValid(void)
 {
 	QStringList errorsList;
 	errorsList.append(mExitFileNameManager->boxIsValid());
 	errorsList.append(mFileExtensionManager->boxIsValid());
 	errorsList.append(mExitFolderSelector->boxIsValid());
-	return errorsList;
+
+	if (errorsList.isEmpty())
+	{
+		return true;
+	}
+	else {
+		showErrors(errorsList);
+		return false;
+	}
+}
+
+void QFileManager::showErrors(QStringList const & errorsList)
+{
+	QMessageBox errorsBox;
+	errorsBox.setText("Une erreur c'est produite");
+	for (auto const error : errorsList)
+	{
+		errorsBox.setInformativeText("- " + error + "\n");
+	}
+	int result = errorsBox.exec();
+	
 }

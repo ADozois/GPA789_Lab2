@@ -13,7 +13,8 @@ class QFileManager : public QWidget
 
 public:
 	QFileManager(QWidget * parent = nullptr);
-	QStringList optionsValid(void);
+	bool optionsValid(void);
+	void showErrors(QStringList const & errorsList);
 
 private:
 
