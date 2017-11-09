@@ -67,9 +67,18 @@ QStringList QExitFolderSelector::boxIsValid(void)
 	if (mRadioButtonNewFolder->isChecked())
 	{
 		QString text = mFolderPathLabel->text();
+		QFileInfo checkDirectory;
 		if (!(QString::compare(mFolderPathLabel->text(), mFolderPathLabelInit)))
 		{
 			mErrors.append(mFolderPathLabelInit);
+		}
+		else
+		{
+			//On valide que le folder existe toujours
+			checkDirectory.setFile(mFolderPathLabel);
+			if (!checkFile.isDir()) {
+				mErrors.append(mFolderPathLabelInit);
+			}
 		}
 	}
 
@@ -78,5 +87,14 @@ QStringList QExitFolderSelector::boxIsValid(void)
 
 QString QExitFolderSelector::getFolder(void)
 {
-	return mFolderPathLabel->text();
+	
+
+	if (mRadioButtonNewFolder->isChecked())
+	{
+		return mFolderPathLabel->text();
+	}
+	else
+	{
+		return QFileDialog::getExistingDirectoryUrl();
+	}	
 }
