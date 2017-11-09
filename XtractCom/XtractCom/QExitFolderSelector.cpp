@@ -75,8 +75,8 @@ QStringList QExitFolderSelector::boxIsValid(void)
 		else
 		{
 			//On valide que le folder existe toujours
-			checkDirectory.setFile(mFolderPathLabel);
-			if (!checkFile.isDir()) {
+			checkDirectory.setFile(mFolderPathLabel->text());
+			if (!checkDirectory.isDir()) {
 				mErrors.append(mFolderPathLabelInit);
 			}
 		}
@@ -95,6 +95,6 @@ QString QExitFolderSelector::getFolder(void)
 	}
 	else
 	{
-		return QFileDialog::getExistingDirectoryUrl();
+		return QFileDialog::getExistingDirectoryUrl().toString();
 	}	
 }
