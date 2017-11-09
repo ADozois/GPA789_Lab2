@@ -58,9 +58,7 @@ QStringList QFileExtensionManager::boxIsValid(void)
 	{
 		if (mExtension->text().isEmpty()) {
 			mErrors.append(mExtEmpty);
-			return mErrors;
 		}
-		return mErrors;
 	}
 	return mErrors;
 }
