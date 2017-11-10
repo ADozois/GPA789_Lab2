@@ -110,3 +110,8 @@ bool QExitFolderSelector::isDirectory(QString path)
 	QDir dir(path);
 	return dir.exists(path);
 }
+
+QString QExitFolderSelector::getPathOfFilename(QString fileName)
+{
+	return QFileInfo(fileName).absolutePath();
+}

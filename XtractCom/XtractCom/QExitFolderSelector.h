@@ -20,6 +20,7 @@ public:
 	QString getFolder(void);
 	
 	static bool isDirectory(QString path);
+	static QString getPathOfFilename(QString fileName);
 
 
 protected:
