@@ -104,3 +104,9 @@ QString QExitFolderSelector::getFolder(void)
 		return emptyString;
 	}	
 }
+
+bool QExitFolderSelector::isDirectory(QString path)
+{
+	QDir dir(path);
+	return dir.exists(path);
+}

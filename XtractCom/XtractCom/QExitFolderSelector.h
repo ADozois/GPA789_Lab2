@@ -18,6 +18,8 @@ public:
 	QExitFolderSelector(QWidget * parent = nullptr);
 	QStringList boxIsValid(void);
 	QString getFolder(void);
+	
+	static bool isDirectory(QString path);
 
 
 protected:
