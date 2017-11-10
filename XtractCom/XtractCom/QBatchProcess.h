@@ -31,7 +31,7 @@ private:
 
 	bool checkGenerateValid(void);
 	void cleanList(QStringList & filesList);
-	void extract(QString fileName);
+	void extract(QString fileName, int index);
 };
 
 #endif // !Q_GENERATION_LOT_H

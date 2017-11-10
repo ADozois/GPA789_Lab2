@@ -42,10 +42,12 @@ void QBatchProcess::generate(bool checked) {
 	if (checkGenerateValid())
 	{
 		QStringList files = mFileSelect->selectedFiles();
+		int index = mFileManager->getFile().at(1).toInt();
 		cleanList(files);
 		for (auto const & file: files)
 		{
-			extract(file);
+			extract(file, index);
+			++index;
 		}
 	}
 	
@@ -74,7 +76,7 @@ void QBatchProcess::cleanList(QStringList & filesList) {
 	}
 }
 
-void QBatchProcess::extract(QString fileName)
+void QBatchProcess::extract(QString fileName, int index)
 {
 	QString folder, file, extension;
 	QStringList fileOptions;
@@ -86,6 +88,10 @@ void QBatchProcess::extract(QString fileName)
 	{
 		folder = QExitFolderSelector::getPathOfFilename(fileName) + "/";
 	}
+	else
+	{
+		folder = folder + "/";
+	}
 	if (fileOptions.isEmpty())
 	{
 		file = info.fileName();
@@ -93,7 +99,7 @@ void QBatchProcess::extract(QString fileName)
 	}
 	else
 	{
-		file = fileOptions.at(0) + fileOptions.at(1);
+		file = fileOptions.at(0) + QString(std::to_string(index).c_str());
 	}
 
 	try
