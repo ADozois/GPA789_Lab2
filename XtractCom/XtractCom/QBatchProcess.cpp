@@ -3,13 +3,14 @@
 #include "QFileSelector.h"
 #include "QFileManager.h"
 #include "QPushButtonBox.h"
+#include "QExitFolderSelector.h"
+#include "QFileExtensionManager.h"
 #include <QGridLayout>
 #include <QFileInfo>
-#include <QFileDialog>
 #include <QMessageBox>
 
-
 #include <sstream>
+#include <iostream>
 
 
 
@@ -77,16 +78,18 @@ void QBatchProcess::extract(QString fileName)
 {
 	QString folder, file, extension;
 	QStringList fileOptions;
+	QFileInfo info(fileName);
 	folder = mFileManager->getFolder();
 	fileOptions = mFileManager->getFile();
 	extension = mFileManager->getExtension();
-	if (folder == "No path selected")
+	if (folder.isEmpty())
 	{
-		folder = QFileDialog::getExistingDirectoryUrl().toString();
+		folder = QExitFolderSelector::getPathOfFilename(fileName) + "/";
 	}
 	if (fileOptions.isEmpty())
 	{
-		file = fileName;
+		file = info.fileName();
+		file = QFileExtensionManager::removeExtension(file);
 	}
 	else
 	{
@@ -96,10 +99,14 @@ void QBatchProcess::extract(QString fileName)
 	try
 	{
 		std::stringstream inputFile(fileName.toStdString());
-		std::stringstream outputFile(folder.toStdString() + file.toStdString() + extension.toStdString());
+		std::stringstream outputStream;
+		std::ofstream outputFile(folder.toStdString() + file.toStdString() + extension.toStdString());
+		
+		mXtractC.setup(fileName.toStdString(), outputStream);
+		mXtractC.process(mFileManager->wantStats());
 
-		Xtract.setup(inputFile, outputFile);
-		Xtract.process(false);
+		outputFile << outputStream.rdbuf();
+		outputFile.close();
 	}
 	catch (XtractC::ParamException const & exception)
 	{	

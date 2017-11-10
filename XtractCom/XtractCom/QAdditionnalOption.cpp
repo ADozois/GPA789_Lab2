@@ -25,3 +25,8 @@ QAdditionnalOption::QAdditionnalOption(QWidget *parent)
 
 
 }
+
+bool QAdditionnalOption::isChecked(void)
+{
+	return mCheckBoxAddStats->isChecked();
+}

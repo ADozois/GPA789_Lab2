@@ -17,6 +17,8 @@ public:
 	QString getExtension(void);
 	QStringList boxIsValid(void);
 
+	static QString removeExtension(QString & fileName);
+
 private:
 	QGroupBox * mGroupBox;
 	QRadioButton * mXtractExt;

@@ -19,8 +19,8 @@ public:
 	QStringList boxIsValid(void);
 	QString getFolder(void);
 	
-	static bool isDirectory(QString path);
-	static QString getPathOfFilename(QString fileName);
+	static bool isDirectory(const QString & path);
+	static QString getPathOfFilename(const QString & fileName);
 
 
 protected:

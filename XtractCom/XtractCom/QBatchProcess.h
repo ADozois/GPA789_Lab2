@@ -26,7 +26,7 @@ private:
 	QFileSelector * mFileSelect;
 	QFileManager * mFileManager;
 	QPushButtonBox * mGenerateButton;
-	XtractC Xtract;
+	XtractC mXtractC;
 	
 
 	bool checkGenerateValid(void);

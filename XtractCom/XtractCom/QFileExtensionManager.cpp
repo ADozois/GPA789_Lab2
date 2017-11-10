@@ -62,3 +62,9 @@ QStringList QFileExtensionManager::boxIsValid(void)
 	}
 	return mErrors;
 }
+
+QString QFileExtensionManager::removeExtension(QString & fileName)
+{
+	QString file;
+	return file = fileName.section(".", 0, 0) + "_" + fileName.section(".", 1, -1);
+}

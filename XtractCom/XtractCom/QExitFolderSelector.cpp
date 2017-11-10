@@ -1,10 +1,10 @@
 #include "QExitFolderSelector.h"
-#include <qpushbutton.h>
-#include <qgroupbox.h>
-#include <qradiobutton.h>
-#include <qlabel.h>
+#include <QPushButton>
+#include <QGroupBox>
+#include <QRadioButton>
+#include <QLabel>
 #include <QGridLayout>
-#include <qfiledialog.h>
+#include <QFileDialog>
 
 const QString QExitFolderSelector::mGroupBoxName{ "Dossier de sortie" };
 const QString QExitFolderSelector::mRadioButtonSourceFolderName{ "Utiliser le dossier source" };
@@ -105,13 +105,13 @@ QString QExitFolderSelector::getFolder(void)
 	}	
 }
 
-bool QExitFolderSelector::isDirectory(QString path)
+bool QExitFolderSelector::isDirectory(const QString & path)
 {
 	QDir dir(path);
 	return dir.exists(path);
 }
 
-QString QExitFolderSelector::getPathOfFilename(QString fileName)
+QString QExitFolderSelector::getPathOfFilename(const QString & fileName)
 {
 	return QFileInfo(fileName).absolutePath();
 }

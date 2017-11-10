@@ -14,6 +14,7 @@ class QAdditionnalOption : public QWidget
 
 public:
 	QAdditionnalOption(QWidget * parent = nullptr);
+	bool isChecked(void);
 
 protected:
 	QGroupBox * mGroupBoxOption;

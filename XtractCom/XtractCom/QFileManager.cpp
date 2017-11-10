@@ -60,7 +60,7 @@ void QFileManager::showErrors(QStringList const & errorsList)
 
 bool QFileManager::wantStats(void)
 {
-	return false;
+	return mAdditionnalOptionBox->isChecked();
 }
 
 QString QFileManager::getFolder(void)
