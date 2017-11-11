@@ -4,7 +4,7 @@
 int main(int argc, char *argv[])
 {
 	QApplication a(argc, argv);
-	XtractCom w;
-	w.show();
+	XtractCom XtractApp;
+	XtractApp.show();
 	return a.exec();
 }
