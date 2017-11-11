@@ -20,6 +20,8 @@ public:
 	QString getFolder(void);
 	QStringList getFile(void);
 	QString getExtension(void);
+	QString getFileName(void);
+	int getPrefixName(void);
 
 
 private:

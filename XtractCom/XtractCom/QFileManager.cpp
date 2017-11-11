@@ -77,3 +77,13 @@ QString QFileManager::getExtension(void)
 {
 	return mFileExtensionManager->getExtension();
 }
+
+QString QFileManager::getFileName(void)
+{
+	return mExitFileNameManager->getFileName();
+}
+
+int QFileManager::getPrefixName(void)
+{
+	return mExitFileNameManager->getPrefix();
+}
