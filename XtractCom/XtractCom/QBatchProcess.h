@@ -31,7 +31,9 @@ private:
 
 	bool checkGenerateValid(void);
 	void cleanList(QStringList & filesList);
-	void extract(QString fileName, int index);
+	void extract(QString fileName, QString folder, QString name, QString extension);
+	QString retreiveFolder(QString fileName);
+	QString retreiveFileName(QString fileName, int index);
 };
 
 #endif // !Q_GENERATION_LOT_H

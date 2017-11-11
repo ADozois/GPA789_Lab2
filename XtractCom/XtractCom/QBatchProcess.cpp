@@ -42,11 +42,12 @@ void QBatchProcess::generate(bool checked) {
 	if (checkGenerateValid())
 	{
 		QStringList files = mFileSelect->selectedFiles();
-		int index = mFileManager->getFile().at(1).toInt();
+		QString folder = retreiveFolder(files.first());
+		int index = mFileManager->getPrefixName();
 		cleanList(files);
 		for (auto const & file: files)
 		{
-			extract(file, index);
+			extract(file,folder, retreiveFileName(file, index), mFileManager->getExtension());
 			++index;
 		}
 	}
@@ -54,7 +55,7 @@ void QBatchProcess::generate(bool checked) {
 }
 
 void QBatchProcess::listChanged(void) {
-	if (mFileSelect->selectedFiles().isEmpty()) {
+	if (mFileSelect->selectedFilesCount() == 0) {
 		mGenerateButton->disableButton(true);
 	}
 	else
@@ -76,37 +77,13 @@ void QBatchProcess::cleanList(QStringList & filesList) {
 	}
 }
 
-void QBatchProcess::extract(QString fileName, int index)
+void QBatchProcess::extract(QString fileName, QString folder, QString name, QString extension)
 {
-	QString folder, file, extension;
-	QStringList fileOptions;
-	QFileInfo info(fileName);
-	folder = mFileManager->getFolder();
-	fileOptions = mFileManager->getFile();
-	extension = mFileManager->getExtension();
-	if (folder.isEmpty())
-	{
-		folder = QExitFolderSelector::getPathOfFilename(fileName) + "/";
-	}
-	else
-	{
-		folder = folder + "/";
-	}
-	if (fileOptions.isEmpty())
-	{
-		file = info.fileName();
-		file = QFileExtensionManager::removeExtension(file);
-	}
-	else
-	{
-		file = fileOptions.at(0) + QString(std::to_string(index).c_str());
-	}
-
 	try
 	{
 		std::stringstream inputFile(fileName.toStdString());
 		std::stringstream outputStream;
-		std::ofstream outputFile(folder.toStdString() + file.toStdString() + extension.toStdString());
+		std::ofstream outputFile(folder.toStdString() + name.toStdString() + extension.toStdString());
 		
 		mXtractC.setup(fileName.toStdString(), outputStream);
 		mXtractC.process(mFileManager->wantStats());
@@ -132,4 +109,33 @@ void QBatchProcess::extract(QString fileName, int index)
 	}
 
 	
+}
+
+QString QBatchProcess::retreiveFolder(QString fileName)
+{
+	QString folder = mFileManager->getFolder();
+	if (folder.isEmpty())
+	{
+		folder = QExitFolderSelector::getPathOfFilename(fileName) + "/";
+	}
+	else
+	{
+		folder = folder.append("/");
+	}
+	return folder;
+}
+
+QString QBatchProcess::retreiveFileName(QString fileName, int index)
+{
+	QString file;
+	QFileInfo info(fileName);
+	if (mFileManager->getFile().isEmpty())
+	{
+		file = QFileExtensionManager::removeExtension(info.fileName());
+	}
+	else
+	{
+		file = mFileManager->getFileName() + QString(std::to_string(index).c_str());
+	}
+	return file;
 }
