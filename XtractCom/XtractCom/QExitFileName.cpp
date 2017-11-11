@@ -99,3 +99,13 @@ QStringList QExitFileName::getFileOptions(void)
 		return options;
 	}
 }
+
+QString QExitFileName::getFileName(void)
+{
+	return mNewName->text();
+}
+
+int QExitFileName::getPrefix(void)
+{
+	return mSpinBox->value();
+}

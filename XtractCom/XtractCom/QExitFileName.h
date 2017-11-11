@@ -17,6 +17,8 @@ public:
 	QExitFileName(QWidget *parent=nullptr);
 	QStringList boxIsValid(void);
 	QStringList getFileOptions(void);
+	QString getFileName(void);
+	int getPrefix(void);
 
 
 protected:
