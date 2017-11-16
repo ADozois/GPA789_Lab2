@@ -5,6 +5,7 @@
 #include "QAdditionnalOption.h"
 #include <QVBoxLayout>
 #include <QMessageBox>
+#include <qicon.h>
 
 
 QFileManager::QFileManager(QWidget * parent)
@@ -48,6 +49,7 @@ void QFileManager::showErrors(QStringList const & errorsList)
 	QMessageBox errorsBox;
 	QString finalMessage;
 	errorsBox.setText("Une erreur c'est produite");
+	errorsBox.setWindowIcon(QIcon(":/XtractCom/Icon"));
 	for (auto const error : errorsList)
 	{
 
