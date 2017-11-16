@@ -21,19 +21,27 @@ public:
 public slots:
 	void generate(bool checked);
 	void listChanged(void);
-
+	
 private:
+	//Enum class pour différentier lorsque l'extraction du document réussit, échou à cause d'une erreur sur le fichier (avec XtractC) *partialFailure* ou échou car le fichier de sortie ne peut être lu *failure*.
+	//Le code *failure* est nécessaire car les vérification faites sur le dossier de sortie dans le QFilemanager ne permette pas de détecter si le nom comporte des caractères spéciaux.
+	//Ceux-ci semble être détecter seulement lorsqu'on essaie de créé un fichier dans ce dossier et la création échou.
+	enum class extractExitCode{succes,partialFailure,failure};
 	QFileSelector * mFileSelect;
 	QFileManager * mFileManager;
 	QPushButtonBox * mGenerateButton;
 	XtractC mXtractC;
+
 	
 
 	bool checkGenerateValid(void);
 	void cleanList(QStringList & filesList);
-	void extract(QString fileName, QString folder, QString name, QString extension);
+	QBatchProcess::extractExitCode extract(QString fileName, QString folder, QString name, QString extension);
 	QString retreiveFolder(QString fileName);
 	QString retreiveFileName(QString fileName, int index);
+	void showMessageBox(QString const message);
+
+	static const QString mInvalidFolderMessage;
 };
 
 #endif // !Q_GENERATION_LOT_H
