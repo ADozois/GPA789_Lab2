@@ -17,19 +17,22 @@ const QString QExitFolderSelector::mInvalidDirstoryText{ "Le dossier de sortie s
 QExitFolderSelector::QExitFolderSelector(QWidget * parent)
 	:QWidget(parent)
 {
-
+	//Creation des éléments du widget
 	mGroupBoxExitFolder = new QGroupBox(mGroupBoxName);
 	mRadioButtonSourceFolder = new QRadioButton(mRadioButtonSourceFolderName);
 	mRadioButtonNewFolder = new QRadioButton(mRadioButtonNewFolderName);
 	mFolderPathLabel = new QLabel(mFolderPathLabelInit);
 	mSelectButton = new QPushButton(mSelectButtonName);
+	//Conditions initiales
 	mRadioButtonSourceFolder->setChecked(true);
 	mSelectButton->setEnabled(false);
 	mFolderPathLabel->setVisible(false);
+	//Connection des différents éléments du widget
 	connect(mRadioButtonNewFolder, &QRadioButton::toggled, mSelectButton, &QPushButton::setEnabled);
 	connect(mRadioButtonNewFolder, &QRadioButton::toggled, mFolderPathLabel, &QLabel::setVisible);
 	connect(mSelectButton, &QPushButton::clicked, this, &QExitFolderSelector::getDirectoryPath);
 
+	//Disposition des éléments dans le widget
 	QGridLayout * gridLayout = new QGridLayout;
 	gridLayout->addWidget(mRadioButtonSourceFolder, 0, 0);
 	gridLayout->addWidget(mRadioButtonNewFolder, 1, 0);
@@ -64,11 +67,13 @@ void QExitFolderSelector::getDirectoryPath()
 
 }
 
+
+//Fonction qui valide que le fichier de sortie choisit est utilisable
 QStringList QExitFolderSelector::boxIsValid(void)
 {
 	QStringList mErrors;
 
-	//On regarde si on veux spécifié le pdossier de sortie
+	//On regarde si on veux spécifié le dossier de sortie
 	if (mRadioButtonNewFolder->isChecked())
 	{
 		QString text = mFolderPathLabel->text();

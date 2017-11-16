@@ -11,10 +11,13 @@
 QFileManager::QFileManager(QWidget * parent)
 	: QWidget(parent)
 {
+	//Creation des éléments
 	mExitFolderSelector = new QExitFolderSelector;
 	mFileExtensionManager = new QFileExtensionManager;
 	mExitFileNameManager = new QExitFileName;
 	mAdditionnalOptionBox = new QAdditionnalOption;
+
+	//Disposition des éléments
 	QVBoxLayout * vLayout = new QVBoxLayout;
 
 	vLayout->addWidget(mExitFolderSelector);
@@ -26,6 +29,8 @@ QFileManager::QFileManager(QWidget * parent)
 
 }
 
+
+//Fonction qui vérifie la validité de toutes les informations des widget la composant
 bool QFileManager::optionsValid(void)
 {
 	QStringList errorsList;

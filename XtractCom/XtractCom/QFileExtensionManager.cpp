@@ -15,10 +15,13 @@ const QString QFileExtensionManager::mExtEmpty{ "L'extension est vide" };
 QFileExtensionManager::QFileExtensionManager(QWidget *parent)
 	: QWidget(parent)
 {
+	//Creation des éléments du widget
 	mGroupBox = new QGroupBox(mBoxName);
 	mXtractExt = new QRadioButton(mFirstButtonName);
 	mOtherExt = new QRadioButton(mSecondButtonName);
-	mExtension = new QLineEdit();	
+	mExtension = new QLineEdit();
+
+	//Disposition des éléments dans le widget
 	QGridLayout * grid = new QGridLayout;
 	QBoxLayout * layout = new QBoxLayout(QBoxLayout::Up);
 	grid->addWidget(mXtractExt, 0, 0);
@@ -28,8 +31,10 @@ QFileExtensionManager::QFileExtensionManager(QWidget *parent)
 	layout->addWidget(mGroupBox);
 	setLayout(layout);
 
+	//Initialisation des éléments
 	widgetInitialization();
 	
+	//Connection entre les éléments
 	connect(mXtractExt, &QRadioButton::clicked, mExtension, &QLineEdit::setDisabled);
 	connect(mOtherExt, &QRadioButton::clicked, mExtension, &QLineEdit::setEnabled);
 
@@ -51,6 +56,8 @@ QString QFileExtensionManager::getExtension(void) {
 	}		
 }
 
+
+//Fonction de validation de l'extension entrée (extension présente si nécessaire)
 QStringList QFileExtensionManager::boxIsValid(void)
 {
 	QStringList mErrors;

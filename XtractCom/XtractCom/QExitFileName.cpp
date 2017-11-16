@@ -71,6 +71,7 @@ QExitFileName::QExitFileName(QWidget * parent)
 
 }
 
+//Methode qui permet de vérifier la présence d'un nom si l'option de choix d'un nom personnalisé est coché.
 QStringList QExitFileName::boxIsValid(void)
 {
 	QStringList mErrors;

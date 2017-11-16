@@ -138,9 +138,6 @@
     <ClCompile Include="QBatchProcess.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_QBatchProcess.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_QExitFolderSelector.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
@@ -193,6 +190,12 @@
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_QAdditionnalOption.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_QBatchProcess.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_QBatchProcess.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,5 +1,17 @@
-#ifndef Q_GENERATION_LOT_H
-#define Q_GENERATION_LOT_H
+/*
+Widget comportant tous les éléments (widgets) permettant de faire l'extraction des commentaires de plusieurs fichiers.
+Ce widget comporte aussi plusieurs widget permettant de définir les paramètres du fichier de sortie de l'extraction des commentaires.
+
+Par: Antoine Dozois et Guillaume Chabot-Nobert
+Pour le cours de: GPA789 - Analyse et conception orientées objet / Laboratoire 2
+Le 16 novembre 2017
+
+*/
+
+#ifndef Q_BATCHPROCESS_H
+#define Q_BATCHPROCESS_H
+
+
 
 #include "XtractC.h"
 #include <QWidget>
@@ -44,7 +56,7 @@ private:
 	static const QString mInvalidFolderMessage;
 };
 
-#endif // !Q_GENERATION_LOT_H
+#endif // !Q_BATCHPROCESS_H
 
 
 

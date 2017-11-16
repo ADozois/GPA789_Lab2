@@ -53,7 +53,7 @@ XtractCom::XtractCom(QWidget *parent)
 	connect(mQCppCommentViewer, &QCppCommentViewer::eventSignaled, ui.statusBar, &QStatusBar::showMessage);
 }
 
-
+//Fonction nécessaire afin d'avoir l'option de sélectionner plusieurs fichiers en même temps dans le deuxième onglet
 void XtractCom::setFileExplorerMode(int index)
 {
 	switch (index)

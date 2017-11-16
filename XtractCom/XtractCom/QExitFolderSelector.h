@@ -1,5 +1,16 @@
-#ifndef Q_Exit_Folder_Selector_H
-#define Q_Exit_Folder_Selector_H
+/*
+Widget permettant de choisir le dossier dans lequel les fichiers de sorties seront placé.
+On peut choisir d'utiliser le fichier d'entré ou bien de choisir un autre fichier de sortie.
+
+
+Par: Antoine Dozois et Guillaume Chabot-Nobert
+Pour le cours de: GPA789 - Analyse et conception orientées objet / Laboratoire 2
+Le 16 novembre 2017
+
+*/
+
+#ifndef Q_EXIT_FOLDER_SELECTOR_H
+#define Q_EXIT_FOLDER_SELECTOR_H
 
 
 #include <QWidget>
